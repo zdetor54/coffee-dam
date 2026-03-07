@@ -13,6 +13,16 @@
     --font-brand-script: "Lobster Two", "Times New Roman", serif;
 }
 
+html {
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 /*
 Color usage:
 - Primary: headings, links, active states, key actions.
@@ -24,6 +34,7 @@ Color usage:
 body {
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
     background:
         linear-gradient(180deg, rgba(220, 229, 239, 0.28), transparent 28rem),
         var(--color-secondary);
@@ -246,6 +257,11 @@ body {
     text-transform: uppercase;
 }
 
+.content-panel.gr .eyebrow,
+.content-panel.gr .info-label {
+    text-transform: none;
+}
+
 .info-value,
 .info-value a {
     margin-top: 0.4rem;
@@ -268,16 +284,35 @@ body {
 
 .hours-list {
     margin-top: 0.45rem;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    column-gap: 0.85rem;
+    row-gap: 0.1rem;
+    justify-content: center;
 }
 
 .hours-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
+    display: contents;
     color: var(--color-primary);
     font-size: 1rem;
     font-weight: 700;
     line-height: 1.8;
+}
+
+.hours-row span:first-child {
+    text-align: right;
+}
+
+.hours-row span:last-child {
+    text-align: left;
+}
+
+.hours-note {
+    margin-top: 0.75rem;
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
 }
 
 .footer-note {
