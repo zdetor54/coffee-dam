@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Dam | Coming Soon</title>
+    <title>Coffee Dam | Street Coffee in Damouchari, Pelion, Greece</title>
     <meta
         name="description"
-        content="Coffee Dam is preparing its new website. View the coming soon page in English or Greek."
+        content="Coffee Dam is a street coffee spot in Damouchari, Pelion, Greece. Perfect for a pit stop, we serve specialty coffee and snacks by the sea. Visit us for a relaxing break on your Pelion adventure."
     >
+    <meta name="keywords" content="Coffee Dam, street coffee, Damouchari, Pelion, Greece, coffee shop, snacks, pit stop, seaside coffee, Pelion cafe, Greek coffee, Damouhari, Καφές, Νταμούχαρη, Πήλιο">
+    <link rel="canonical" href="https://coffeedam.com/">
+    <meta property="og:title" content="Coffee Dam | Street Coffee in Damouchari, Pelion, Greece">
+    <meta property="og:description" content="Street coffee and snacks in Damouchari, Pelion. The perfect pit stop for travelers in Greece.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coffeedam.com/">
+    <meta property="og:image" content="https://coffeedam.com/assets/hero.png">
+    <meta property="og:locale" content="en_US">
+    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -25,6 +34,47 @@
         crossorigin="anonymous"
     >
     <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Coffee Dam",
+        "image": "https://coffeedam.com/assets/hero.png",
+        "@id": "https://coffeedam.com/",
+        "url": "https://coffeedam.com/",
+        "telephone": "+30 24260 31190",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Damouchari",
+            "addressLocality": "Pelion",
+            "postalCode": "370 12",
+            "addressCountry": "GR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 39.397,
+            "longitude": 23.174
+        },
+        "servesCuisine": ["Coffee", "Snacks"],
+        "description": "Street coffee and snacks in Damouchari, Pelion. The perfect pit stop for travelers in Greece.",
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "08:00",
+            "closes": "20:00"
+        }]
+    }
+    </script>
 </head>
 <body>
     <input id="lang-en" type="radio" name="language" checked>
@@ -75,17 +125,28 @@
                 </div>
 
                 <section id="contact-en" class="info-grid">
-                    <article class="info-item">
+                    <article class="info-item info-item-wide">
                         <div class="info-label">Address</div>
                         <div class="info-value">Damouchari • Pelion 370 12, Greece</div>
+                        <div class="info-map">
+                            <a href="https://maps.app.goo.gl/jTWtyaMGzQkZgFhD9" target="_blank" rel="noopener">View on Google Maps</a>
+                            <iframe
+                                src="https://www.google.com/maps?q=39.397,23.174&z=14&t=k&output=embed"
+                                width="100%" height="200" class="map-frame" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </article>
                     <article class="info-item">
-                        <div class="info-label">Phone</div>
-                        <div class="info-value"><a href="tel:+302426031190">+30 24260 31190</a></div>
-                    </article>
-                    <article class="info-item">
-                        <div class="info-label">Hours & Website</div>
-                        <div class="info-value">Coming soon</div>
+                        <div class="info-label">Hours</div>
+                        <div class="hours-list">
+                            <div class="hours-row"><span>Monday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Tuesday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Wednesday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Thursday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Friday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Saturday</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                        </div>
+                        <div class="hours-note">Currently closed for winter</div>
                     </article>
                 </section>
             </section>
@@ -95,7 +156,7 @@
                     <div class="row g-0">
                         <div class="col-lg-6">
                             <div class="hero-copy">
-                                <div class="eyebrow">Σύντομα</div>
+                                <div class="eyebrow">ΣΥΝΤΟΜΑ</div>
                                 <h1 class="hero-title">Ένα online σπίτι για το <span class="brand-script">Coffee Dam</span>.</h1>
                                 <p class="hero-text mb-0">
                                     Η ιστοσελίδα ετοιμάζεται. Μέχρι τότε, αυτή η σελίδα κρατά τις βασικές πληροφορίες
@@ -120,17 +181,28 @@
                 </div>
 
                 <section id="contact-gr" class="info-grid">
-                    <article class="info-item">
-                        <div class="info-label">Διεύθυνση</div>
+                    <article class="info-item info-item-wide">
+                        <div class="info-label">ΔΙΕΥΘΥΝΣΗ</div>
                         <div class="info-value">Νταμούχαρη • Πήλιο 370 12, Greece</div>
+                        <div class="info-map">
+                            <a href="https://maps.app.goo.gl/jTWtyaMGzQkZgFhD9" target="_blank" rel="noopener">Δείτε στο Google Maps</a>
+                            <iframe
+                                src="https://www.google.com/maps?q=39.397,23.174&z=14&t=k&output=embed"
+                                width="100%" height="200" class="map-frame" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </article>
                     <article class="info-item">
-                        <div class="info-label">Τηλέφωνο</div>
-                        <div class="info-value"><a href="tel:+302426031190">+30 24260 31190</a></div>
-                    </article>
-                    <article class="info-item">
-                        <div class="info-label">Ωράριο & Website</div>
-                        <div class="info-value">Σύντομα διαθέσιμα</div>
+                        <div class="info-label">ΩΡΑΡΙΟ</div>
+                        <div class="hours-list">
+                            <div class="hours-row"><span>Δευτέρα</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Τρίτη</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Τετάρτη</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Πέμπτη</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Παρασκευή</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Σάββατο</span><span>09:00-18:00</span></div>
+                            <div class="hours-row"><span>Κυριακή</span><span>Closed</span></div>
+                        </div>
+                        <div class="hours-note">Προς το παρόν κλειστά για τον χειμώνα</div>
                     </article>
                 </section>
             </section>

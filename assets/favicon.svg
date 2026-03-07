@@ -1,0 +1,9 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="16" r="16" fill="#f7f3ed"/>
+  <!-- Cup body: trapezoid, narrower at bottom -->
+  <polygon points="9,10 23,10 20,26 12,26" fill="#26486b"/>
+  <!-- Lid: full width, slightly offset -->
+  <rect x="7" y="7" width="18" height="4" rx="1.5" fill="#26486b"/>
+  <!-- Central oval: narrower and secondary color -->
+  <ellipse cx="16" cy="18" rx="2.2" ry="4" fill="#f7f3ed"/>
+</svg>
