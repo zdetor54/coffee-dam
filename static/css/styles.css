@@ -234,6 +234,10 @@ body {
     background: #fff;
 }
 
+.info-item-wide {
+    grid-column: span 2;
+}
+
 .info-label {
     color: var(--color-muted);
     font-size: 0.82rem;
@@ -250,6 +254,30 @@ body {
     font-weight: 700;
     line-height: 1.6;
     text-decoration: none;
+}
+
+.info-map {
+    margin-top: 0.8rem;
+}
+
+.map-frame {
+    margin-top: 0.5rem;
+    border: 0;
+    border-radius: 8px;
+}
+
+.hours-list {
+    margin-top: 0.45rem;
+}
+
+.hours-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.8;
 }
 
 .footer-note {
@@ -285,6 +313,10 @@ body {
 
     .info-grid {
         grid-template-columns: 1fr;
+    }
+
+    .info-item-wide {
+        grid-column: auto;
     }
 
     .visual-image {
