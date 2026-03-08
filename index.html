@@ -126,6 +126,14 @@
                     </div>
                 </div>
 
+                <section class="gallery-card" aria-labelledby="gallery-title-en">
+                    <div
+                        class="photo-carousel js-photo-carousel"
+                        data-carousel-id="gallery-en"
+                        data-alt-prefix="Coffee Dam gallery photo"
+                    ></div>
+                </section>
+
                 <section id="contact-en" class="info-grid">
                     <article class="info-item info-item-wide">
                         <div class="info-label">Address</div>
@@ -183,6 +191,23 @@
                     </div>
                 </div>
 
+                <section class="gallery-card" aria-labelledby="gallery-title-gr">
+                    <div class="gallery-copy">
+                        <div class="gallery-label">&#934;&#969;&#964;&#959;&#947;&#961;&#945;&#966;&#953;&#954;&#942; &#963;&#965;&#955;&#955;&#959;&#947;&#942;</div>
+                        <h2 id="gallery-title-gr" class="gallery-title">&#924;&#953;&#945; &#954;&#959;&#957;&#964;&#953;&#957;&#942; &#956;&#945;&#964;&#953;&#940; &#963;&#964;&#959; Coffee Dam</h2>
+                        <p class="gallery-text mb-0">
+                            &#928;&#961;&#972;&#963;&#966;&#945;&#964;&#949;&#962; &#966;&#969;&#964;&#959;&#947;&#961;&#945;&#966;&#943;&#949;&#962; &#945;&#960;&#972; &#964;&#959; &#963;&#951;&#956;&#949;&#943;&#959; &#948;&#943;&#960;&#955;&#945; &#963;&#964;&#959; &#955;&#953;&#956;&#940;&#957;&#953;.
+                            &#919; &#963;&#965;&#955;&#955;&#959;&#947;&#942; &#945;&#957;&#945;&#957;&#949;&#974;&#957;&#949;&#964;&#945;&#953; &#956;&#972;&#957;&#951; &#964;&#951;&#962;, &#949;&#957;&#974; &#956;&#960;&#959;&#961;&#949;&#943;&#964;&#949; &#957;&#945; &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#942;&#963;&#949;&#964;&#949;
+                            &#964;&#945; &#946;&#941;&#955;&#951;, &#964;&#953;&#962; &#964;&#949;&#955;&#949;&#943;&#949;&#962; &#942; swipe &#963;&#964;&#959; mobile &#947;&#953;&#945; &#967;&#949;&#953;&#961;&#959;&#954;&#943;&#957;&#951;&#964;&#951; &#960;&#955;&#959;&#942;&#947;&#951;&#963;&#951;.
+                        </p>
+                    </div>
+                    <div
+                        class="photo-carousel js-photo-carousel"
+                        data-carousel-id="gallery-gr"
+                        data-alt-prefix="Coffee Dam gallery photo"
+                    ></div>
+                </section>
+
                 <section id="contact-gr" class="info-grid">
                     <article class="info-item info-item-wide">
                         <div class="info-label">ΔΙΕΥΘΥΝΣΗ</div>
@@ -216,5 +241,160 @@
             </footer>
         </div>
     </main>
+    <script>
+        const carouselImages = [
+            "assets/carousel_images/image1.jpg",
+            "assets/carousel_images/image2.jpg",
+            "assets/carousel_images/image3.jpg",
+            "assets/carousel_images/image4.jpg",
+            "assets/carousel_images/image5.jpg"
+        ];
+
+        const AUTO_ROTATE_MS = 5000;
+
+        document.querySelectorAll(".js-photo-carousel").forEach((mountNode) => {
+            if (!carouselImages.length) {
+                return;
+            }
+
+            const carouselId = mountNode.dataset.carouselId || `carousel-${Math.random().toString(16).slice(2)}`;
+            const altPrefix = mountNode.dataset.altPrefix || "Gallery image";
+
+            mountNode.innerHTML = `
+                <div class="photo-carousel-frame">
+                    <button class="carousel-arrow carousel-arrow-prev" type="button" aria-label="Previous slide">
+                        <span aria-hidden="true">&#8249;</span>
+                    </button>
+                    <div class="photo-carousel-viewport" aria-live="polite">
+                        <div class="photo-carousel-track">
+                            ${carouselImages.map((src, index) => `
+                                <figure class="photo-slide${index === 0 ? " is-active" : ""}" data-index="${index}">
+                                    <img src="${src}" alt="${altPrefix} ${index + 1}" loading="${index === 0 ? "eager" : "lazy"}">
+                                </figure>
+                            `).join("")}
+                        </div>
+                    </div>
+                    <button class="carousel-arrow carousel-arrow-next" type="button" aria-label="Next slide">
+                        <span aria-hidden="true">&#8250;</span>
+                    </button>
+                </div>
+                <div class="carousel-dots" role="tablist" aria-label="Slide navigation">
+                    ${carouselImages.map((_, index) => `
+                        <button
+                            class="carousel-dot${index === 0 ? " is-active" : ""}"
+                            type="button"
+                            role="tab"
+                            aria-selected="${index === 0 ? "true" : "false"}"
+                            aria-controls="${carouselId}-slide-${index}"
+                            aria-label="Go to slide ${index + 1}"
+                            data-index="${index}"
+                        ></button>
+                    `).join("")}
+                </div>
+            `;
+
+            const slides = Array.from(mountNode.querySelectorAll(".photo-slide"));
+            const dots = Array.from(mountNode.querySelectorAll(".carousel-dot"));
+            const prevButton = mountNode.querySelector(".carousel-arrow-prev");
+            const nextButton = mountNode.querySelector(".carousel-arrow-next");
+            const viewport = mountNode.querySelector(".photo-carousel-viewport");
+            let activeIndex = 0;
+            let autoRotate = null;
+            let touchStartX = null;
+
+            slides.forEach((slide, index) => {
+                slide.id = `${carouselId}-slide-${index}`;
+                slide.setAttribute("aria-hidden", String(index !== 0));
+
+                const image = slide.querySelector("img");
+                image.addEventListener("load", () => {
+                    const isPortrait = image.naturalHeight > image.naturalWidth;
+                    slide.classList.toggle("is-portrait", isPortrait);
+                    slide.classList.toggle("is-landscape", !isPortrait);
+                });
+
+                if (image.complete) {
+                    const isPortrait = image.naturalHeight > image.naturalWidth;
+                    slide.classList.toggle("is-portrait", isPortrait);
+                    slide.classList.toggle("is-landscape", !isPortrait);
+                }
+            });
+
+            const render = (nextIndex) => {
+                activeIndex = (nextIndex + slides.length) % slides.length;
+
+                slides.forEach((slide, index) => {
+                    const isActive = index === activeIndex;
+                    slide.classList.toggle("is-active", isActive);
+                    slide.setAttribute("aria-hidden", String(!isActive));
+                });
+
+                dots.forEach((dot, index) => {
+                    const isActive = index === activeIndex;
+                    dot.classList.toggle("is-active", isActive);
+                    dot.setAttribute("aria-selected", String(isActive));
+                });
+            };
+
+            const stopAutoRotate = () => {
+                if (autoRotate) {
+                    window.clearInterval(autoRotate);
+                    autoRotate = null;
+                }
+            };
+
+            const startAutoRotate = () => {
+                stopAutoRotate();
+                autoRotate = window.setInterval(() => {
+                    render(activeIndex + 1);
+                }, AUTO_ROTATE_MS);
+            };
+
+            prevButton.addEventListener("click", () => {
+                render(activeIndex - 1);
+                startAutoRotate();
+            });
+
+            nextButton.addEventListener("click", () => {
+                render(activeIndex + 1);
+                startAutoRotate();
+            });
+
+            dots.forEach((dot) => {
+                dot.addEventListener("click", () => {
+                    render(Number(dot.dataset.index));
+                    startAutoRotate();
+                });
+            });
+
+            mountNode.addEventListener("mouseenter", stopAutoRotate);
+            mountNode.addEventListener("mouseleave", startAutoRotate);
+            mountNode.addEventListener("focusin", stopAutoRotate);
+            mountNode.addEventListener("focusout", startAutoRotate);
+
+            viewport.addEventListener("touchstart", (event) => {
+                touchStartX = event.changedTouches[0].clientX;
+            }, { passive: true });
+
+            viewport.addEventListener("touchend", (event) => {
+                if (touchStartX === null) {
+                    return;
+                }
+
+                const distance = event.changedTouches[0].clientX - touchStartX;
+                touchStartX = null;
+
+                if (Math.abs(distance) < 40) {
+                    return;
+                }
+
+                render(distance > 0 ? activeIndex - 1 : activeIndex + 1);
+                startAutoRotate();
+            }, { passive: true });
+
+            render(0);
+            startAutoRotate();
+        });
+    </script>
 </body>
 </html>
