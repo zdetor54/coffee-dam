@@ -71,14 +71,6 @@
             "Chicken Sandwich",
             "Cheese and Tomato Toastie"
           ]
-        },
-        {
-          "title": "Extras",
-          "items": [
-            "Ice Cream",
-            "Whipped Cream",
-            "Extra Cheese"
-          ]
         }
       ]
     },
@@ -152,14 +144,6 @@
             "Κλαμπ Σάντουιτς",
             "Σάντουιτς Κοτόπουλο",
             "Τοστ Τυρί και Ντομάτα"
-          ]
-        },
-        {
-          "title": "Προσθήκες",
-          "items": [
-            "Παγωτό",
-            "Σαντιγί",
-            "Έξτρα Τυρί"
           ]
         }
       ]

@@ -266,8 +266,8 @@
                 <div class="menu-groups">
                     ${menuContent.categories.map((category) => `
                         <article class="menu-group">
-                            <h3 class="menu-group-title">${category.title}</h3>
                             <p class="menu-items">
+                                <span class="menu-group-title">${category.title}:</span>
                                 ${category.items.map((item) => `<span class="menu-item">${item}</span>`).join("")}
                             </p>
                         </article>
