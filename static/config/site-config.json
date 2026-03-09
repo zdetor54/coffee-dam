@@ -1,0 +1,152 @@
+{
+  "menu": {
+    "en": {
+      "title": "Menu",
+      "categories": [
+        {
+          "title": "Coffee",
+          "items": [
+            "Greek Coffee",
+            "Espresso",
+            "Double Espresso",
+            "Cappuccino",
+            "Latte",
+            "Freddo Espresso",
+            "Freddo Cappuccino",
+            "Filter Coffee"
+          ]
+        },
+        {
+          "title": "Chocolate and Hot Drinks",
+          "items": [
+            "Hot Chocolate",
+            "Iced Chocolate",
+            "Tea"
+          ]
+        },
+        {
+          "title": "Soft Drinks and Juices",
+          "items": [
+            "Water",
+            "Soft Drinks",
+            "Fresh Orange Juice",
+            "Homemade Lemonade"
+          ]
+        },
+        {
+          "title": "Savory Crepes",
+          "items": [
+            "Cheese and Ham",
+            "Cheese, Ham and Mushrooms",
+            "Chicken and Peppers",
+            "Spinach and Feta",
+            "Tuna and Tomato",
+            "Plain Cheese"
+          ]
+        },
+        {
+          "title": "Sweet Crepes",
+          "items": [
+            "Nutella",
+            "Nutella and Banana",
+            "Nutella, Banana and Strawberry",
+            "Honey and Walnuts",
+            "Jam and Butter",
+            "Sugar and Lemon"
+          ]
+        },
+        {
+          "title": "Waffles",
+          "items": [
+            "Nutella",
+            "Nutella, Banana and Strawberry",
+            "Ice Cream and Syrup"
+          ]
+        },
+        {
+          "title": "Sandwiches and Toasties",
+          "items": [
+            "Classic Toastie",
+            "Club Sandwich",
+            "Chicken Sandwich",
+            "Cheese and Tomato Toastie"
+          ]
+        }
+      ]
+    },
+    "gr": {
+      "title": "Menu",
+      "categories": [
+        {
+          "title": "Καφέδες",
+          "items": [
+            "Ελληνικός",
+            "Εσπρέσο",
+            "Διπλό Εσπρέσο",
+            "Καπουτσίνο",
+            "Λάτε",
+            "Φρέντο Εσπρέσο",
+            "Φρέντο Καπουτσίνο",
+            "Φίλτρου"
+          ]
+        },
+        {
+          "title": "Σοκολάτες και Ροφήματα",
+          "items": [
+            "Ζεστή Σοκολάτα",
+            "Κρύα Σοκολάτα",
+            "Τσάι"
+          ]
+        },
+        {
+          "title": "Αναψυκτικά και Χυμοί",
+          "items": [
+            "Νερό",
+            "Αναψυκτικά",
+            "Φυσικός Χυμός Πορτοκάλι",
+            "Σπιτική Λεμονάδα"
+          ]
+        },
+        {
+          "title": "Κρέπες Αλμυρές",
+          "items": [
+            "Τυρί και Ζαμπόν",
+            "Τυρί, Ζαμπόν και Μανιτάρια",
+            "Κοτόπουλο και Πιπεριές",
+            "Σπανάκι και Φέτα",
+            "Τόνος και Ντομάτα",
+            "Απλή με Τυρί"
+          ]
+        },
+        {
+          "title": "Κρέπες Γλυκές",
+          "items": [
+            "Μερέντα",
+            "Μερέντα και Μπανάνα",
+            "Μερέντα, Μπανάνα και Φράουλα",
+            "Μέλι και Καρύδια",
+            "Μαρμελάδα και Βούτυρο",
+            "Ζάχαρη και Λεμόνι"
+          ]
+        },
+        {
+          "title": "Βάφλες",
+          "items": [
+            "Μερέντα",
+            "Μερέντα, Μπανάνα και Φράουλα",
+            "Παγωτό και Σιρόπι"
+          ]
+        },
+        {
+          "title": "Σάντουιτς και Τοστ",
+          "items": [
+            "Τοστ Κλασικό",
+            "Κλαμπ Σάντουιτς",
+            "Σάντουιτς Κοτόπουλο",
+            "Τοστ Τυρί και Ντομάτα"
+          ]
+        }
+      ]
+    }
+  }
+}
