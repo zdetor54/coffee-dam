@@ -126,12 +126,22 @@
                     </div>
                 </div>
 
-                <section class="gallery-card" aria-labelledby="gallery-title-en">
-                    <div
-                        class="photo-carousel js-photo-carousel"
-                        data-carousel-id="gallery-en"
-                        data-alt-prefix="Coffee Dam gallery photo"
-                    ></div>
+                <section class="feature-card">
+                    <section
+                        class="menu-card js-menu-card"
+                        aria-labelledby="menu-title-en"
+                        data-menu-lang="en"
+                    >
+                        <div class="menu-loading">Loading menu...</div>
+                    </section>
+
+                    <section class="gallery-card" aria-label="Coffee Dam gallery">
+                        <div
+                            class="photo-carousel js-photo-carousel"
+                            data-carousel-id="gallery-en"
+                            data-alt-prefix="Coffee Dam gallery photo"
+                        ></div>
+                    </section>
                 </section>
 
                 <section id="contact-en" class="info-grid">
@@ -191,21 +201,22 @@
                     </div>
                 </div>
 
-                <section class="gallery-card" aria-labelledby="gallery-title-gr">
-                    <div class="gallery-copy">
-                        <div class="gallery-label">&#934;&#969;&#964;&#959;&#947;&#961;&#945;&#966;&#953;&#954;&#942; &#963;&#965;&#955;&#955;&#959;&#947;&#942;</div>
-                        <h2 id="gallery-title-gr" class="gallery-title">&#924;&#953;&#945; &#954;&#959;&#957;&#964;&#953;&#957;&#942; &#956;&#945;&#964;&#953;&#940; &#963;&#964;&#959; Coffee Dam</h2>
-                        <p class="gallery-text mb-0">
-                            &#928;&#961;&#972;&#963;&#966;&#945;&#964;&#949;&#962; &#966;&#969;&#964;&#959;&#947;&#961;&#945;&#966;&#943;&#949;&#962; &#945;&#960;&#972; &#964;&#959; &#963;&#951;&#956;&#949;&#943;&#959; &#948;&#943;&#960;&#955;&#945; &#963;&#964;&#959; &#955;&#953;&#956;&#940;&#957;&#953;.
-                            &#919; &#963;&#965;&#955;&#955;&#959;&#947;&#942; &#945;&#957;&#945;&#957;&#949;&#974;&#957;&#949;&#964;&#945;&#953; &#956;&#972;&#957;&#951; &#964;&#951;&#962;, &#949;&#957;&#974; &#956;&#960;&#959;&#961;&#949;&#943;&#964;&#949; &#957;&#945; &#967;&#961;&#951;&#963;&#953;&#956;&#959;&#960;&#959;&#953;&#942;&#963;&#949;&#964;&#949;
-                            &#964;&#945; &#946;&#941;&#955;&#951;, &#964;&#953;&#962; &#964;&#949;&#955;&#949;&#943;&#949;&#962; &#942; swipe &#963;&#964;&#959; mobile &#947;&#953;&#945; &#967;&#949;&#953;&#961;&#959;&#954;&#943;&#957;&#951;&#964;&#951; &#960;&#955;&#959;&#942;&#947;&#951;&#963;&#951;.
-                        </p>
-                    </div>
-                    <div
-                        class="photo-carousel js-photo-carousel"
-                        data-carousel-id="gallery-gr"
-                        data-alt-prefix="Coffee Dam gallery photo"
-                    ></div>
+                <section class="feature-card">
+                    <section
+                        class="menu-card js-menu-card"
+                        aria-labelledby="menu-title-gr"
+                        data-menu-lang="gr"
+                    >
+                        <div class="menu-loading">Φόρτωση μενού...</div>
+                    </section>
+
+                    <section class="gallery-card" aria-label="Συλλογή φωτογραφιών Coffee Dam">
+                        <div
+                            class="photo-carousel js-photo-carousel"
+                            data-carousel-id="gallery-gr"
+                            data-alt-prefix="Coffee Dam gallery photo"
+                        ></div>
+                    </section>
                 </section>
 
                 <section id="contact-gr" class="info-grid">
@@ -242,6 +253,49 @@
         </div>
     </main>
     <script>
+        const renderMenuCard = (mountNode, menuContent) => {
+            if (!menuContent) {
+                mountNode.innerHTML = '<div class="menu-loading">Menu unavailable.</div>';
+                return;
+            }
+
+            mountNode.innerHTML = `
+                <div class="menu-copy">
+                    <h2 id="menu-title-${mountNode.dataset.menuLang}" class="menu-title">${menuContent.title}</h2>
+                </div>
+                <div class="menu-groups">
+                    ${menuContent.categories.map((category) => `
+                        <article class="menu-group">
+                            <h3 class="menu-group-title">${category.title}</h3>
+                            <p class="menu-items">
+                                ${category.items.map((item) => `<span class="menu-item">${item}</span>`).join("")}
+                            </p>
+                        </article>
+                    `).join("")}
+                </div>
+            `;
+        };
+
+        fetch("static/config/site-config.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Failed to load config: ${response.status}`);
+                }
+
+                return response.json();
+            })
+            .then((siteConfig) => {
+                document.querySelectorAll(".js-menu-card").forEach((mountNode) => {
+                    const lang = mountNode.dataset.menuLang || "en";
+                    renderMenuCard(mountNode, siteConfig.menu?.[lang]);
+                });
+            })
+            .catch(() => {
+                document.querySelectorAll(".js-menu-card").forEach((mountNode) => {
+                    mountNode.innerHTML = '<div class="menu-loading">Menu unavailable.</div>';
+                });
+            });
+
         const carouselImages = [
             "assets/carousel_images/image1.jpg",
             "assets/carousel_images/image2.jpg",

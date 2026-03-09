@@ -11,6 +11,7 @@
     --font-ui: "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, sans-serif;
     --font-display: "Noto Serif", Georgia, serif;
     --font-brand-script: "Lobster Two", "Times New Roman", serif;
+    --panel-padding: clamp(1.4rem, 3vw, 2.4rem);
 }
 
 html {
@@ -147,7 +148,7 @@ body {
 }
 
 .hero-copy {
-    padding: clamp(1.4rem, 3vw, 2.4rem);
+    padding: var(--panel-padding);
 }
 
 .eyebrow {
@@ -238,46 +239,78 @@ body {
     margin-top: 1.1rem;
 }
 
-.gallery-card {
+.feature-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 1.25rem;
     margin-top: 1.1rem;
-    padding: 1.25rem;
+    align-items: end;
+    padding: var(--panel-padding);
     border: 1px solid var(--color-border);
     border-radius: 1.25rem;
     background: rgba(255, 255, 255, 0.9);
     box-shadow: var(--shadow-soft);
 }
 
-.gallery-copy {
-    max-width: 44rem;
-    margin-bottom: 1rem;
+.menu-card,
+.gallery-card {
+    min-width: 0;
 }
 
-.gallery-label {
-    color: var(--color-accent);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+.menu-card {
+    padding: 0;
 }
 
-.gallery-title {
-    margin: 0.5rem 0 0;
+.gallery-card {
+    align-self: end;
+}
+
+.menu-copy {
+    margin-bottom: 1.25rem;
+}
+
+.menu-title {
+    margin: 0;
+    color: var(--color-primary);
+    font-family: var(--font-brand-script);
+    font-size: clamp(2.4rem, 4.8vw, 3.4rem);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+.menu-loading {
+    color: var(--color-muted);
+    font-weight: 600;
+}
+
+.menu-groups {
+    display: grid;
+    gap: 1.15rem;
+}
+
+.menu-group {
+    display: grid;
+    gap: 0.3rem;
+}
+
+.menu-group-title {
+    margin: 0;
     color: var(--color-primary);
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.03em;
+    font-size: 1.05rem;
+    line-height: 1.3;
 }
 
-.gallery-text {
-    margin-top: 0.75rem;
+.menu-items {
+    margin: 0;
     color: var(--color-muted);
-    line-height: 1.75;
+    line-height: 1.7;
 }
 
-.content-panel.gr .gallery-label {
-    text-transform: none;
-    letter-spacing: 0.06em;
+.menu-item + .menu-item::before {
+    content: " | ";
+    color: var(--color-accent);
 }
 
 .photo-carousel {
@@ -420,7 +453,7 @@ body {
 }
 
 .info-item {
-    padding: 1.15rem 1.2rem;
+    padding: var(--panel-padding);
     border: 1px solid var(--color-border);
     border-radius: 1rem;
     background: #fff;
@@ -550,6 +583,22 @@ body {
 
     .gallery-card {
         padding: 1rem;
+    }
+
+    .feature-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: var(--panel-padding);
+        align-items: start;
+    }
+
+    .menu-card {
+        padding: 0;
+    }
+
+    .gallery-card {
+        padding: 0;
+        align-self: auto;
     }
 
     .photo-carousel-viewport {
